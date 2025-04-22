@@ -1,5 +1,7 @@
 References: https://developer.wordpress.org/block-editor/reference-guides/block-api/block-attributes/
 <br>Meta: https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/
+<br> Support: https://developer.wordpress.org/block-editor/reference-guides/block-api/block-supports/
+<br> Related: https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/
 
 ```
 // Block and sidebar block Attributes ! block.json ! 
@@ -16,6 +18,29 @@ References: https://developer.wordpress.org/block-editor/reference-guides/block-
       }
 },
 ...
+
+```
+
+```
+// Support
+
+"supports": {
+  "align": true,
+  "alignWide": true,
+  "anchor": true,
+  "customClassName": true,
+  "html": false,
+  "reusable": true,
+  "multiple": true,
+  "lock": false,
+  "renaming": true,
+  "position": { "sticky": true },
+  "color": { "text": true, "background": true, "link": true },
+  "spacing": { "padding": true, "margin": true },
+  "typography": { "fontSize": true, "lineHeight": true },
+  "border": true,
+  "dimensions": true
+}
 
 ```
 
