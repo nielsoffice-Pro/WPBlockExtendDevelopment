@@ -164,6 +164,66 @@ npm install @wordpress/server-side-render --save
 
 ```
 
+<br>If You Want to Create Another Block…
+<br>No, you don’t need to create another plugin just to create another block. In fact, it’s best practice to include multiple blocks in one plugin, especially if they’re related.
+<br>
+<br>Instead of creating another plugin, you can simply add another folder + ``` block.json ``` file in the same plugin, like this:
+<br>
+
+```
+
+my-block-plugin/
+├── build/
+├── src/
+│   ├── block-one/
+│   │   ├── block.json
+│   │   ├── edit.js
+│   │   ├── save.js
+│   ├── block-two/
+│   │   ├── block.json
+│   │   ├── edit.js
+│   │   ├── save.js
+├── plugin.php
+
+```
+
+How to Register Multiple Blocks in One Plugin
+If you’re using the @wordpress/scripts setup (create-block), you can tweak ``` index.js ``` like this:
+
+```
+
+import './block-one';
+import './block-two';
+
+```
+
+
+In Your plugin.php
+<br>No changes needed if you're using block.json + register_block_type_from_metadata(). It will pick up each block automatically when included.
+
+```PHP
+
+function my_block_plugin_register_blocks() {
+    register_block_type( __DIR__ . '/build/block-one' );
+    register_block_type( __DIR__ . '/build/block-two' );
+}
+add_action( 'init', 'my_block_plugin_register_blocks' );
+
+
+```
+
+```PHP
+// If you have lots of blocks, loop through them:
+
+$blocks = [ 'block-one', 'block-two', 'block-three' ];
+
+foreach ( $blocks as $block ) {
+    register_block_type( __DIR__ . "/build/$block" );
+}
+
+```
+
+
 Helpful link: 
 
 WP Theme Block Development : https://github.com/nielsoffice-Pro/WPTHEME-REACTBLOCK
