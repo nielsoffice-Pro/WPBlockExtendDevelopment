@@ -164,6 +164,8 @@ npm install @wordpress/server-side-render --save
 
 ```
 
+-----------------------------------------------------------------------------------------
+
 <br>If You Want to Create Another Block…
 <br>No, you don’t need to create another plugin just to create another block. In fact, it’s best practice to include multiple blocks in one plugin, especially if they’re related.
 <br>
@@ -223,6 +225,7 @@ foreach ( $blocks as $block ) {
 
 ```
 
+-----------------------------------------------------------------------------------------
 
 Helpful link: 
 
