@@ -133,4 +133,14 @@ You can start development with:
 
 ```
 
+
+
+Passing the value from block inpur into PHP render file 
+
 ```
+
+npm install @wordpress/server-side-render --save
+
+```
+
+
