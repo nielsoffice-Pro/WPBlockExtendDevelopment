@@ -1,3 +1,21 @@
+```
+// Block and sidebar block Attributes ! block.json ! 
+
+...
+"attributes": {
+    "name": {
+        "type": "string",
+        "default": ""
+      },
+      "age": {
+        "type": "number",
+        "default": 0
+      }
+},
+...
+
+```
+
 # WPBlockExtendDevelopment
 WordPress Custom Block Gutenberg Builder 
 
