@@ -164,3 +164,4 @@ npm install @wordpress/server-side-render --save
 Helpful link: 
 
 WP Theme Block Development : https://github.com/nielsoffice-Pro/WPTHEME-REACTBLOCK
+<br> https://developer.wordpress.org/block-editor/reference-guides/core-blocks/
