@@ -1,3 +1,6 @@
+References: https://developer.wordpress.org/block-editor/reference-guides/block-api/block-attributes/
+<br>Meta: https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/
+
 ```
 // Block and sidebar block Attributes ! block.json ! 
 
