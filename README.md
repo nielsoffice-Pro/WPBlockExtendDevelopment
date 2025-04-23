@@ -272,13 +272,13 @@ function wp_register_blocks_api()
 {
   $blocks = [
     [ 'name' => 'phprv2', 'options' => [
-      'render_callback' => 'call_back_function_name'
+      'render_callback' => 'render_block_namespace' // call_back_function_name
     ]]
   ];
 
   foreach($blocks as $block) {
     register_block_type(
-      plugin_dir_path(__FILE__) . 'build/' . $block['name'],
+      UP_PLUGIN_DIR_APP . 'build/' . $block['name'],
       isset($block['options']) ? $block['options'] : []
     );
   }
@@ -338,9 +338,12 @@ ex.
 # - Plugin
 #     | - Plugins.php
 
+
+define('UP_PLUGIN_DIR_APP', plugin_dir_path(__FILE__));
+
 // Includes
-$rootFiles = glob(plugin_dir_path(__FILE__) . 'includes/*.php');
-$subdirectoryFiles = glob(plugin_dir_path(__FILE__) . 'includes/**/*.php');
+$rootFiles = glob(UP_PLUGIN_DIR_APP . 'includes/*.php');
+$subdirectoryFiles = glob(UP_PLUGIN_DIR_APP . 'includes/**/*.php');
 $allFiles = array_merge($rootFiles, $subdirectoryFiles);
 
 foreach($allFiles as $filename) {
