@@ -272,7 +272,7 @@ function wp_register_blocks_api()
 {
   $blocks = [
     [ 'name' => 'phprv2', 'options' => [
-      'render_callback' => 'up_search_form_render_cb_new'
+      'render_callback' => 'call_back_function_name'
     ]]
   ];
 
