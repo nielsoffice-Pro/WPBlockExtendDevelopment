@@ -252,6 +252,117 @@ foreach ( $blocks as $block ) {
 
 -----------------------------------------------------------------------------------------
 
+<h3>Serverside Rendering</h3>
+
+```PHP 
+# - Plugin
+#     | - Plugin.php
+#     | - includes
+# 		       | - register-blocks.php
+#		       | - blocks
+#					      | - call_back_function_name.php
+#
+#
+# - Plugin
+#    | - Plugin.php
+#    | - includes
+#		       | - register-blocks.php
+
+function wp_register_blocks_api()
+{
+  $blocks = [
+    [ 'name' => 'phprv2', 'options' => [
+      'render_callback' => 'up_search_form_render_cb_new'
+    ]]
+  ];
+
+  foreach($blocks as $block) {
+    register_block_type(
+      plugin_dir_path(__FILE__) . 'build/' . $block['name'],
+      isset($block['options']) ? $block['options'] : []
+    );
+  }
+}
+
+# - Plugin
+#    | - Plugin.php
+#    | - includes
+#		       | - register-blocks.php
+#		       | - blocks
+#   			      | - call_back_function_name.php
+
+function call_back_function_name($atts) {
+
+$myProp = esc_attr($atts['myProp']);
+return $myProp;
+
+}
+
+```
+
+```JSON
+
+build.json
+
+ex.
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/phprv2",
+  "version": "0.1.0",
+  "title": "Phprv2",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Example block scaffolded with Create Block tool.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "myProp": {
+      "type": "string",
+      "default": "Default from block.json"
+    }
+  },
+  "textdomain": "phprv2",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}
+
+```
+
+```PHP
+
+# - Plugin
+#     | - Plugins.php
+
+// Includes
+$rootFiles = glob(plugin_dir_path(__FILE__) . 'includes/*.php');
+$subdirectoryFiles = glob(plugin_dir_path(__FILE__) . 'includes/**/*.php');
+$allFiles = array_merge($rootFiles, $subdirectoryFiles);
+
+foreach($allFiles as $filename) {
+  include_once($filename);
+}
+
+// Hooks
+add_action('init', 'wp_register_blocks_api');
+
+```
+
+```PHP
+
+// Main WP Directory!
+// wp-config.php DEBUG!
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'SCRIPT_DEBUG', true );
+
+```
+
 Helpful link: 
 
 WP Theme Block Development : https://github.com/nielsoffice-Pro/WPTHEME-REACTBLOCK
