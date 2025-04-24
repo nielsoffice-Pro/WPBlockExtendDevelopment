@@ -55,6 +55,12 @@ npx @wordpress/create-block my-block
 
 ```
 
+npm install @wordpress/scripts --save-dev
+
+```
+
+```
+
 cd my-block
 
 my-block/
