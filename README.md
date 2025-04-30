@@ -203,6 +203,8 @@ npm install @wordpress/server-side-render --save
 <br>Instead of creating another plugin, you can simply add another folder + ``` block.json ``` file in the same plugin, like this:
 <br>
 
+<br>https://github.com/WordPress/block-development-examples/wiki/Adding-new-examples
+
 ```
 
 my-block-plugin/
